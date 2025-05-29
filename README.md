@@ -1,3 +1,4 @@
 # Home Assistant Floorplan
 
-![image](https://github.com/user-attachments/assets/df9f3f96-ffe1-497c-bbf4-94740e8abe30)
+![image](https://github.com/user-attachments/assets/01f8850b-8fec-4e25-87aa-5aaa810c68e1)
+
