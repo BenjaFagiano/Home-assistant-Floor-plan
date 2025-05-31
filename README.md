@@ -1,5 +1,6 @@
 # Home Assistant Configuration
 
-![image](https://github.com/user-attachments/assets/d2cdcc69-4e01-4411-9a28-36e03dbbe35d)
+![image](https://github.com/user-attachments/assets/5ea91171-305f-4819-adcb-55028f3eec85)
+
 
 
