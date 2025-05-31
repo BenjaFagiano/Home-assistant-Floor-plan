@@ -1,0 +1,342 @@
+views:
+  - title: Floorplan
+    type: panel
+    badges: []
+    cards:
+      - type: picture-elements
+        image: /local/floorplan/Planosinluz.png
+        panel: true
+        elements:
+          - type: custom:layout-card
+            style:
+              left: 8%
+              top: 50%
+              width: 20%
+              height: 100%
+              background: rgba(42,46,48,1)
+              backdrop-filter: blur(5px)
+              padding: 15px
+              box-sizing: border-box
+              z-index: 2
+          - type: custom:clock-weather-card
+            entity: weather.forecast_casa
+            time_pattern: HH:mm
+            time_format: 24
+            weather_icon_type: line
+            animated_icon: true
+            forecast_rows: 5
+            locale: es
+            style:
+              left: 3%
+              top: 30%
+              width: 0%
+              heigth: 0%
+              z-index: 3
+          - type: custom:mushroom-person-card
+            entity: person.benjamin_fagiano
+            style:
+              left: 4%
+              top: 7%
+              width: 5%
+              z-index: 3
+            icon: mdi:account
+            layout: vertical
+            primary_info: name
+            secondary_info: state
+            icon_type: entity-picture
+            card_mod:
+              styles: |
+                ha-card {
+                  border-radius: 10vw;
+                  margin-right: 8px;
+                  background: rgba(255,255,255,0.7);
+                }
+          - type: custom:mushroom-person-card
+            entity: person.belu
+            style:
+              left: 10%
+              top: 7%
+              width: 5%
+              z-index: 3
+            icon: mdi:account
+            layout: vertical
+            primary_info: name
+            secondary_info: state
+            icon_type: entity-picture
+            card_mod:
+              styles: |
+                ha-card {
+                  border-radius: 10vw;
+                  margin-right: 6px;
+                  background: rgba(255,255,255,0.7);
+                }
+          - type: custom:calendar-card-pro
+            title: Calendario Familia
+            title_font_size: 20px
+            title_color: var(--primary-color)
+            background_color: transparent !important
+            filter_duplicates: true
+            days_to_show: 5
+            max_events_to_show: 10
+            show_past_events: false
+            time_24h: true
+            show_time: true
+            refresh_interval: 15
+            style:
+              left: 8%
+              top: 60%
+              width: 17%
+              z-index: 3
+            entities:
+              - entity: calendar.benja
+                accent_color: '#1e88e5'
+              - entity: calendar.belu
+                accent_color: '#ff6c92'
+              - entity: calendar.dptofagianoolmo
+                accent_color: '#43a047'
+              - entity: calendar.family
+                allowlist: Shopping|Super
+                label: 🛒
+                accent_color: '#43a047'
+              - entity: calendar.family
+                allowlist: Cumpleaños|Aniversario|Cumple
+                label: 🎉
+                accent_color: '#e91e63'
+              - entity: calendar.family
+                blocklist: Shopping|Super|Cumpleaños|Aniversario|Cumple
+                accent_color: '#607d8b'
+            split_multiday_events: true
+            month_separator_width: 1px
+            month_separator_color: '#03a9f450'
+            event_background_opacity: 25
+            vertical_line_width: 3px
+            event_spacing: 6px
+            show_empty_days: false
+            empty_day_color: var(--secondary-text-color)
+          - type: image
+            entity: input_boolean.light_kitchen
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              mix-blend-mode: lighten
+              z-index: 1
+              filter: >-
+                ${ "hue-rotate(" +
+                (states['input_boolean.light_kitchen'].attributes.hs_color ?
+                states['input_boolean.light_kitchen'].attributes.hs_color[0] :
+                0) + "deg)"}
+              opacity: >-
+                ${states['input_boolean.light_kitchen'].state === 'on' ?
+                (states['input_boolean.light_kitchen'].attributes.brightness /
+                255) : '0'}
+            state_image:
+              'on': /local/floorplan/Planoluzkitchen.png
+              'off': /local/floorplan/Planosinluz.png
+            tap_action:
+              action: none
+          - type: image
+            entity: input_boolean.light_living_room
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              mix-blend-mode: lighten
+              z-index: 1
+              filter: >-
+                ${ "hue-rotate(" +
+                (states['input_boolean.light_living_room'].attributes.hs_color ?
+                states['input_boolean.light_living_room'].attributes.hs_color[0]
+                : 0) + "deg)"}
+              opacity: >-
+                ${states['input_boolean.light_living_room'].state === 'on' ?
+                (states['input_boolean.light_living_room'].attributes.brightness
+                / 255) : '0'}
+            state_image:
+              'on': /local/floorplan/Planoluzliving.png
+              'off': /local/floorplan/Planosinluz.png
+            tap_action:
+              action: none
+          - type: image
+            entity: input_boolean.light_hallway
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              mix-blend-mode: lighten
+              z-index: 1
+              filter: >-
+                ${ "hue-rotate(" +
+                (states['input_boolean.light_hallway'].attributes.hs_color ?
+                states['input_boolean.light_hallway'].attributes.hs_color[0] :
+                0) + "deg)"}
+              opacity: >-
+                ${states['light.Hallwayinput_boolean.light_hallway'].state ===
+                'on' ?
+                (states['input_boolean.light_hallway'].attributes.brightness /
+                255) : '0'}
+            state_image:
+              'on': /local/floorplan/Planoluzhallway.png
+              'off': /local/floorplan/Planosinluz.png
+            tap_action:
+              action: none
+          - type: image
+            entity: input_boolean.light_bedroom
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              mix-blend-mode: lighten
+              z-index: 1
+              filter: >-
+                ${ "hue-rotate(" +
+                (states['input_boolean.light_bedroom'].attributes.hs_color ?
+                states['input_boolean.light_bedroom'].attributes.hs_color[0]: 0)
+                + "deg)"}
+              opacity: >-
+                ${states['input_boolean.light_bedroom'].state === 'on' ?
+                (states['input_boolean.light_bedroom'].attributes.brightness /
+                255) : '0'}
+            state_image:
+              'on': /local/floorplan/Planoluzbedroom.png
+              'off': /local/floorplan/Planosinluz.png
+            tap_action:
+              action: none
+          - type: image
+            entity: input_boolean.light_office
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              mix-blend-mode: lighten
+              z-index: 1
+              filter: >-
+                ${ "hue-rotate(" +
+                (states['input_boolean.light_office'].attributes.hs_color ?
+                states['input_boolean.light_office'].attributes.hs_color[0] : 0)
+                + "deg)"}
+              opacity: >-
+                ${states['input_boolean.light_office'].state === 'on' ?
+                (states['input_boolean.light_office'].attributes.brightness /
+                255) : '0'}
+            state_image:
+              'on': /local/floorplan/Planoluzoffice.png
+              'off': /local/floorplan/Planosinluz.png
+            tap_action:
+              action: none
+          - type: image
+            entity: input_boolean.light_lamp
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              mix-blend-mode: lighten
+              z-index: 1
+              filter: >-
+                ${ "hue-rotate(" +
+                (states['input_boolean.light_lamp'].attributes.hs_color ?
+                states['input_boolean.light_lamp'].attributes.hs_color[0] : 0) +
+                "deg)"}
+              opacity: >-
+                ${states[‘input_boolean.light_lamp’].state === 'on' ?
+                (states[‘input_boolean.light_lamp’].attributes.brightness / 255)
+                : '0'}
+            state_image:
+              'on': /local/floorplan/Planoluzlampara.png
+              'off': /local/floorplan/Planosinluz.png
+            tap_action:
+              action: none
+          - type: image
+            entity: input_boolean.light_bathroom
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+              mix-blend-mode: lighten
+              z-index: 1
+              filter: >-
+                ${ "hue-rotate(" +
+                (states[‘input_boolean.light_bathroom’].attributes.hs_color ?
+                states[‘input_boolean.light_bathroom’].attributes.hs_color[0] :
+                0) + "deg)"}
+              opacity: >-
+                ${states[‘input_boolean.light_bathroom’].state === 'on' ?
+                (states[‘input_boolean.light_bathroom’].attributes.brightness /
+                255) : '0'}
+            state_image:
+              'on': /local/floorplan/Planoluzbathroom.png
+              'off': /local/floorplan/Planosinluz.png
+            tap_action:
+              action: none
+          - type: state-icon
+            entity: input_boolean.light_living_room
+            style:
+              left: 58%
+              top: 65%
+              opacity: null
+              z-index: 4
+            tap_action:
+              action: toggle
+          - type: state-icon
+            entity: input_boolean.light_kitchen
+            style:
+              left: 65%
+              top: 35%
+              opacity: null
+              z-index: 4
+            tap_action:
+              action: toggle
+          - type: state-icon
+            entity: input_boolean.light_hallway
+            style:
+              left: 54%
+              top: 46%
+              opacity: null
+              z-index: 4
+            tap_action:
+              action: toggle
+          - type: state-icon
+            entity: input_boolean.light_office
+            style:
+              left: 55%
+              top: 33%
+              opacity: null
+              z-index: 4
+            tap_action:
+              action: toggle
+          - type: state-icon
+            entity: input_boolean.light_lamp
+            style:
+              left: 49%
+              top: 76%
+              opacity: null
+              z-index: 4
+            tap_action:
+              action: toggle
+          - type: state-icon
+            entity: input_boolean.light_bedroom
+            style:
+              left: 40%
+              top: 36%
+              opacity: null
+              z-index: 4
+            tap_action:
+              action: toggle
+          - type: state-icon
+            entity: input_button.camera_living
+            icon: mdi:cctv
+            style:
+              left: 67.6%
+              top: 54%
+              z-index: 4
+            tap_action:
+              action: more-info
+          - type: state-icon
+            entity: input_boolean.light_bathroom
+            style:
+              left: 42%
+              top: 60%
+              opacity: null
+              z-index: 4
+            tap_action:
+              action: toggle
