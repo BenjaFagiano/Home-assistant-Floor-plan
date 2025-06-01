@@ -70,49 +70,52 @@ views:
                   margin-right: 6px;
                   background: rgba(255,255,255,0.7);
                 }
-          - type: custom:calendar-card-pro
-            title: Calendario Familia
-            title_font_size: 20px
-            title_color: var(--primary-color)
-            background_color: transparent !important
-            filter_duplicates: true
-            days_to_show: 5
-            max_events_to_show: 10
-            show_past_events: false
-            time_24h: true
-            show_time: true
-            refresh_interval: 15
+          - type: custom:mod-card
+            card:
+              type: custom:calendar-card-pro
+              title: " "
+              title_font_size: 20px
+              title_color: var(--primary-color)
+              background_color: transparent !important
+              filter_duplicates: true
+              days_to_show: 2
+              max_events_to_show: 10
+              show_past_events: false
+              time_24h: true
+              show_time: true
+              refresh_interval: 15
+              entities:
+                - entity: calendar.benja
+                  accent_color: '#1e88e5'
+                - entity: calendar.belu
+                  accent_color: '#ff6c92'
+                - entity: calendar.dptofagianoolmo
+                  accent_color: '#43a047'
+                - entity: calendar.family
+                  allowlist: Shopping|Super
+                  label: 🛒
+                  accent_color: '#43a047'
+                - entity: calendar.family
+                  allowlist: Cumpleaños|Aniversario|Cumple
+                  label: 🎉
+                  accent_color: '#e91e63'
+                - entity: calendar.family
+                  blocklist: Shopping|Super|Cumpleaños|Aniversario|Cumple
+                  accent_color: '#607d8b'
+              split_multiday_events: true
+              month_separator_width: 1px
+              month_separator_color: '#03a9f450'
+              event_background_opacity: 25
+              vertical_line_width: 3px
+              event_spacing: 6px
+              show_empty_days: false
+              empty_day_color: var(--secondary-text-color)
             style:
-              left: 8%
-              top: 60%
-              width: 17%
-              z-index: 3
-            entities:
-              - entity: calendar.benja
-                accent_color: '#1e88e5'
-              - entity: calendar.belu
-                accent_color: '#ff6c92'
-              - entity: calendar.dptofagianoolmo
-                accent_color: '#43a047'
-              - entity: calendar.family
-                allowlist: Shopping|Super
-                label: 🛒
-                accent_color: '#43a047'
-              - entity: calendar.family
-                allowlist: Cumpleaños|Aniversario|Cumple
-                label: 🎉
-                accent_color: '#e91e63'
-              - entity: calendar.family
-                blocklist: Shopping|Super|Cumpleaños|Aniversario|Cumple
-                accent_color: '#607d8b'
-            split_multiday_events: true
-            month_separator_width: 1px
-            month_separator_color: '#03a9f450'
-            event_background_opacity: 25
-            vertical_line_width: 3px
-            event_spacing: 6px
-            show_empty_days: false
-            empty_day_color: var(--secondary-text-color)
+                left: 8%
+                top: 60%
+                width: 17%
+                z-index: 3
+                background-color: rgba(0,0,0,0.0)
           - type: image
             entity: input_boolean.light_kitchen
             style:
@@ -340,3 +343,34 @@ views:
               z-index: 4
             tap_action:
               action: toggle
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: template
+                icon: mdi:speedometer
+                entity: sensor.speedtest_ping
+                content: "Ping: {{ states('sensor.speedtest_ping') }} ms"
+            style: 
+              algnment: justify
+              left: 40%
+              top: 81%
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: template
+                icon: mdi:download-circle-outline
+                entity: sensor.speedtest_download
+                content: "Dl: {{ states('sensor.speedtest_download') }} ms"
+            style: 
+              algnment: justify
+              left: 50%
+              top: 81%
+          - type: custom:mushroom-chips-card
+            chips:
+              - type: template
+                icon: mdi:upload-circle-outline
+                entity: sensor.speedtest_upload
+                content: "Up: {{ states('sensor.speedtest_upload') }} ms"
+            style: 
+              algnment: justify
+              left: 60%
+              top: 81%
+              
